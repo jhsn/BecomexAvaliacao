@@ -1,0 +1,252 @@
+﻿@{
+    ViewData["Title"] = "R.O.B.O Becomex";
+    ROBO.API.Model.Corpo corpo = ViewBag.Corpo;
+}
+
+<div class="text-justify">
+    <h1 class="display-4">Status do Robô</h1>
+    <Br /><br />
+
+    <form>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th class="col-md-8">
+                        <h4>Inclinação da cabeça: @corpo.Cabeca.inclinacoesCabeca.situacaoInclinacao</h4>
+                    </th>
+                    <th class="col-md-2">
+                        @{
+                            if (corpo.Cabeca.inclinacoesCabeca.sttInclinacao != 1)
+                            {
+                                <button name="button" value="Cima" formmethod="post" asp-action="MexerInclinacao" class="btn btn-outline-primary">Cima</button>
+                            }
+                            else
+                            {
+                                <button name="button" class="btn btn-secondary" disabled> Cima </button>
+                            }
+                        }
+                    </th>
+                    <th class="col-md-2">
+                        @{
+                            if (corpo.Cabeca.inclinacoesCabeca.sttInclinacao != 3)
+                            {
+                                <button name="button" value="Baixo" formmethod="post" asp-action="MexerInclinacao" class="btn btn-outline-danger">Baixo</button>
+                            }
+                            else
+                            {
+                                <button name="button" class="btn btn-secondary" disabled> Baixo </button>
+                            }
+                        }
+                    </th>
+                </tr>
+            </thead>
+            <thead>
+                <tr>
+                    <th class="col-md-8">
+                        <h4>Rotação da cabeça: @corpo.Cabeca.rotacoesCabeca.situacaoRotacao</h4>
+                    </th>
+
+                    <th class="col-md-2">
+                        @{
+                            if (corpo.Cabeca.inclinacoesCabeca.sttInclinacao == 3)
+                            {
+                                <button name="button" class="btn btn-secondary" disabled> Esquerda </button>
+                            }
+                            else
+                            {
+                                if (corpo.Cabeca.rotacoesCabeca.sttRotacao != 1)
+                                {
+                                    <button name="button" value="Esquerda" formmethod="post" asp-action="MexerRotacao" class="btn btn-outline-primary">Esquerda</button>
+                                }
+                                else
+                                {
+                                    <button name="button" class="btn btn-secondary" disabled> Esquerda </button>
+                                }
+                            }
+                        }
+                    </th>
+                    <th class="col-md-2">
+                        @{
+                            if (corpo.Cabeca.inclinacoesCabeca.sttInclinacao == 3)
+                            {
+                                <button name="button" class="btn btn-secondary" disabled> Direita </button>
+                            }
+                            else
+                            {
+                                if (corpo.Cabeca.rotacoesCabeca.sttRotacao != 5)
+                                {
+                                    <button name="button" value="Direita" formmethod="post" asp-action="MexerRotacao" class="btn btn-outline-danger">Direita</button>
+                                }
+                                else
+                                {
+                                    <button name="button" class="btn btn-secondary" disabled> Direita </button>
+                                }
+                            }
+                        }
+                    </th>
+                </tr>
+            </thead>
+
+            <thead>
+                <tr>
+                    <th class="col-md-8">
+                        <h4>Cotovelo Direito: @corpo.BracoDireito.CotoveloBraco.situacaoSttCotovelo</h4>
+                    </th>
+
+                    <th class="col-md-2">
+                        @{
+                            if (corpo.BracoDireito.CotoveloBraco.sttCotovelo != 1)
+                            {
+                                <button name="button" value="DescontrairCotoveloDireito" formmethod="post" asp-action="MexerCotovelo" class="btn btn-outline-primary">Descontrair</button>
+                            }
+                            else
+                            {
+                                <button name="button" class="btn btn-secondary" disabled> Descontrair </button>
+                            }
+                        }
+                    </th>
+                    <th class="col-md-2">
+                        @{
+                            if (corpo.BracoDireito.CotoveloBraco.sttCotovelo != 4)
+                            {
+                                <button name="button" value="ContrairCotoveloDireito" formmethod="post" asp-action="MexerCotovelo" class="btn btn-outline-danger">Contrair</button>
+                            }
+                            else
+                            {
+                                <button name="button" class="btn btn-secondary" disabled> Contrair </button>
+                            }
+                        }
+                    </th>
+                </tr>
+            </thead>
+
+            <thead>
+                <tr>
+                    <th class="col-md-8">
+                        <h4>Pulso Direito: @corpo.BracoDireito.PulsoBraco.situacaoSttPulso</h4>
+                    </th>
+                    <th class="col-md-2">
+                        @{
+                            if (corpo.BracoDireito.CotoveloBraco.sttCotovelo != 4)
+                            {
+                                <button name="button" class="btn btn-secondary" disabled> Esquerda </button>
+                            }
+                            else
+                            {
+                                if (corpo.BracoDireito.PulsoBraco.sttPulso != 1)
+                                {
+                                    <button name="button" value="MexerPulsoDEsquerda" formmethod="post" asp-action="MexerPulso" class="btn btn-outline-primary">Esquerda</button>
+                                }
+                                else
+                                {
+                                    <button name="button" class="btn btn-secondary" disabled> Esquerda </button>
+                                }
+                            }
+                        }
+                    </th>
+                    <th class="col-md-2">
+
+                        @{
+                            if (corpo.BracoDireito.CotoveloBraco.sttCotovelo != 4)
+                            {
+                                <button name="button" class="btn btn-secondary" disabled> Direita </button>
+                            }
+                            else
+                            {
+                                if (corpo.BracoDireito.PulsoBraco.sttPulso != 7)
+                                {
+                                    <button name="button" value="MexerPulsoDDireita" formmethod="post" asp-action="MexerPulso" class="btn btn-outline-danger">Direita</button>
+                                }
+                                else
+                                {
+                                    <button name="button" class="btn btn-secondary" disabled> Direita </button>
+                                }
+                            }
+                        }
+                    </th>
+
+                </tr>
+            </thead>
+            <thead>
+                <tr>
+                    <th class="col-md-8">
+                        <h4>Cotovelo Esquerdo: @corpo.BracoEsquerdo.CotoveloBraco.situacaoSttCotovelo</h4>
+                    </th>
+                    <th class="col-md-2">
+                        @{
+                            if (corpo.BracoEsquerdo.CotoveloBraco.sttCotovelo != 1)
+                            {
+                                <button name="button" value="DescontrairCotoveloEsquerdo" formmethod="post" asp-action="MexerCotovelo" class="btn btn-outline-primary">Descontrair</button>
+                            }
+                            else
+                            {
+                                <button name="button" class="btn btn-secondary" disabled> Descontrair </button>
+                            }
+                        }
+                    </th>
+                    <th class="col-md-2">
+                        @{
+                            if (corpo.BracoEsquerdo.CotoveloBraco.sttCotovelo != 4)
+                            {
+                                <button name="button" value="ContrairCotoveloEsquerdo" formmethod="post" asp-action="MexerCotovelo" class="btn btn-outline-danger">Contrair</button>
+                            }
+                            else
+                            {
+                                <button name="button" class="btn btn-secondary" disabled> Contrair </button>
+                            }
+                        }
+                    </th>
+                </tr>
+            </thead>
+            <thead>
+                <tr>
+                    <th class="col-md-8">
+                        <h4>Pulso Esquerdo: @corpo.BracoEsquerdo.PulsoBraco.situacaoSttPulso</h4>
+                    </th>
+                    <th class="col-md-2">
+                        @{
+                            if (corpo.BracoEsquerdo.CotoveloBraco.sttCotovelo != 4)
+                            {
+                                <button name="button" class="btn btn-secondary" disabled> Esquerda </button>
+                            }
+                            else
+                            {
+                                if (corpo.BracoEsquerdo.PulsoBraco.sttPulso != 1)
+                                {
+                                    <button name="button" value="MexerPulsoEEsquerda" formmethod="post" asp-action="MexerPulso" class="btn btn-outline-primary">Esquerda</button>
+                                }
+                                else
+                                {
+                                    <button name="button" class="btn btn-secondary" disabled> Esquerda </button>
+                                }
+                            }
+                        }
+                    </th>
+                    <th class="col-md-2">
+                        @{
+                            if (corpo.BracoEsquerdo.CotoveloBraco.sttCotovelo != 4)
+                            {
+                                <button name="button" class="btn btn-secondary" disabled> Direita </button>
+                            }
+                            else
+                            {
+                                if (corpo.BracoEsquerdo.PulsoBraco.sttPulso != 7)
+                                {
+                                    <button name="button" value="MexerPulsoEDireita" formmethod="post" asp-action="MexerPulso" class="btn btn-outline-danger">Direita</button>
+                                }
+                                else
+                                {
+
+                                    <button name="button" class="btn btn-secondary" disabled> Direita </button>
+                                }
+                            }
+                        }
+                    </th>
+                </tr>
+            </thead>
+        </table>
+    </form>
+
+</div>
+
+
